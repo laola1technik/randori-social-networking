@@ -1,0 +1,22 @@
+{
+  "name": "ES6Randori",
+  "description": "Randori to learn ES6 features and JS Testing.",
+  "repository": {
+    "type": "git",
+    "url": " https://github.com/laola1technik/randori-es6.git"
+  },
+  "license": "BSD-3-Clause",
+  "scripts": {
+    "start": "webpack --config webpack.config.js",
+    "test": "NODE_PATH=./src/js/ ./node_modules/mocha/bin/mocha"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "babel-core": "^6.20.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.0",
+    "webpack": "3.7.1",
+    "mocha": "4.0.1",
+    "chai": "4.1.2"
+  }
+}
