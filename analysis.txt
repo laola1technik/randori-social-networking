@@ -1,0 +1,43 @@
+Social Networking Kata
+======================
+
+Concepts
+--------
+* User - Non existing users should be created as they post their first message
+    ** One Timeline
+    ** Subscriptions
+    ** (Follower)
+* Post
+    ** belongs to one user
+    ** timestamp
+    ** no output
+* Command
+    ** posting
+    ** reading
+    ** following
+    ** wall
+* Wall - posts of followed users
+    ** belongs to one user
+    ** multiple timelines
+    ** merged in time
+* Timeline - posts of a user
+    ** sorted by time
+    ** belongs to one user
+    ** has posts
+* Following - subscribe to a user
+    ** one user
+    ** follow one user
+    ** no output
+* Time - Messages have timestamps
+* application
+
+Input Output
+------------
+* Input - Is one line
+* Output - Is a list of lines
+* Side effect - storage changes
+
+Architectural Blocks
+--------------------
+* UI
+* Storage
