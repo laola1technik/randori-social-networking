@@ -1,6 +1,8 @@
 Social Networking Kata
 ======================
 
+http://monospacedmonologues.com/post/49250842364/the-social-networking-kata
+
 Concepts
 --------
 * User - Non existing users should be created as they post their first message
