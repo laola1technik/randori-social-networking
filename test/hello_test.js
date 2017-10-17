@@ -1,7 +1,5 @@
-const chai = require('chai');
-const should = chai.should();
-// const expect = chai.expect;
-// const assert = chai.assert;
+/* global describe, it */
+const should = require('chai').should();
 
 function hello() {
     return "hello world";
