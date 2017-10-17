@@ -1,0 +1,12 @@
+Posting / Reading
+-----------------
+
+* posting should create a new user if not exists
+* multiple posts should generate an equivalent number of post lines
+* latest post should be at the top
+* relative timestamp should show minutes / seconds since creation
+* relative timestamp should show "one minute"
+* relative timestamp should show "two minutes"
+* minutes / hours / "some time ago"
+* see timeline of non-existing user
+* post empty message ignored
