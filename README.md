@@ -1,4 +1,4 @@
-#  - ES6
+#  Social Networking
 The language is JavaScript with [Chai](http://chaijs.com/).
 
 ## Installation
