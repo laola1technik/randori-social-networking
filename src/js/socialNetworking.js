@@ -4,13 +4,18 @@ class SocialNetworking {
     }
 
     submit(command) {
-        if (command.includes(' -> ')) {
-            this.messages.push(command.split(' -> ')[1]);
+        const seperator = ' -> ';
+        if (command.includes(seperator)) {
+            this.messages.push(command.split(seperator)[1]);
         } else {
-            return this.messages.reverse().map(function (message) {
-                return `${message} (1 second ago)`;
-            }).join('\n');
+            return this.messages.reverse()
+                .map(this._addTimestamp)
+                .join('\n');
         }
+    }
+
+    _addTimestamp(message) {
+        return `${message} (1 second ago)`;
     }
 }
 
