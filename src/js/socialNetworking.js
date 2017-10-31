@@ -1,11 +1,15 @@
 class SocialNetworking {
-
+    constructor() {
+        this.messages = [];
+    }
 
     submit(command) {
         if (command.includes(' -> ')) {
-            this.message = command.split(' -> ')[1];
+            this.messages.push(command.split(' -> ')[1]);
         } else {
-            return `${this.message} (1 second ago)`;
+            return this.messages.reverse().map(function (message) {
+                return `${message} (1 second ago)`;
+            }).join('\n');
         }
     }
 }
