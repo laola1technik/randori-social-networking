@@ -1,5 +1,6 @@
 /* global describe, it */
 const should = require('chai').should();
+const SocialNetworking = require('../src/js/socialNetworking');
 
 describe('Social Networking', function () {
     it('should publish message', function () {
