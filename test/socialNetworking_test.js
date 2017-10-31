@@ -40,5 +40,5 @@ describe('Social Networking', function () {
         }, 1000);
 
     });
-    //different user
+    //TODO: different user
 });
