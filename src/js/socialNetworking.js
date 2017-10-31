@@ -3,6 +3,17 @@ class Message {
         this.text = text;
         this.timestamp = new Date();
     }
+
+    format() {
+        const seconds = this._calculateTimeDifference();
+        const unit = 'second' + (seconds > 1 ? 's' : '');
+        return `${this.text} (${seconds} ${unit} ago)`;
+    }
+
+    _calculateTimeDifference() {
+        const now = new Date();
+        return Math.floor((now.getTime() - this.timestamp.getTime()) / 1000) + 1;
+    }
 }
 
 class SocialNetworking {
@@ -16,16 +27,11 @@ class SocialNetworking {
             this._messages.push(new Message(command.split(seperator)[1]));
         } else {
             return this._messages.reverse()
-                .map(this._addTimestamp)
+                .map((message)=> {
+                    return message.format();
+                })
                 .join('\n');
         }
-    }
-
-    _addTimestamp(message) {
-        const now = new Date();
-        const seconds = Math.floor((now.getTime() - message.timestamp.getTime()) / 1000) + 1;
-
-        return `${message.text} (${seconds} second${seconds > 1 ? 's' : ''} ago)`;
     }
 }
 
