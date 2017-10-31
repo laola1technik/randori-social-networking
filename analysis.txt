@@ -36,6 +36,7 @@ Concepts
 Input Output
 ------------
 * Input - Is one line
+** always username command message|user
 * Output - Is a list of lines
 * Side effect - storage changes
 
