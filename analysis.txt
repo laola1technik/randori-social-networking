@@ -22,7 +22,7 @@ Concepts
     ** belongs to one user
     ** multiple timelines
     ** merged in time
-* Timeline - posts of a user
+* Timeline - posts of a single user
     ** sorted by time
     ** belongs to one user
     ** has posts
