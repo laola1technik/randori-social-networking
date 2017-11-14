@@ -3,72 +3,103 @@ const should = require('chai').should();
 const SocialNetworking = require('socialNetworking.js');
 
 describe('Social Networking', function () {
-    it('should publish message', function () {
-        const socialNetworking = new SocialNetworking();
 
-        socialNetworking.submit('Alice -> I love the weather today');
+    describe('Publishing Messages', function () {
+        it('should publish message', function () {
+            const socialNetworking = new SocialNetworking();
 
-        const timeLine = socialNetworking.submit('Alice');
-        timeLine.should.equal('I love the weather today (1 second ago)');
-    });
+            socialNetworking.submit('Alice -> I love the weather today');
 
-    it('should publish two messages', function () {
-        const socialNetworking = new SocialNetworking();
+            const timeLine = socialNetworking.submit('Alice');
+            timeLine.should.equal('I love the weather today (1 second ago)');
+        });
 
-        socialNetworking.submit('Alice -> I love the weather today');
-        socialNetworking.submit('Alice -> I hate the weather tomorrow');
+        it('should publish two messages', function () {
+            const socialNetworking = new SocialNetworking();
 
-        const timeLine = socialNetworking.submit('Alice');
-        timeLine.should.equal(
-            'I hate the weather tomorrow (1 second ago)\n' +
-            'I love the weather today (1 second ago)');
-    });
-
-    it('should record time of message', function (done) {
-        const socialNetworking = new SocialNetworking();
-
-        socialNetworking.submit('Alice -> I love the weather today');
-        setTimeout(function () {
-
+            socialNetworking.submit('Alice -> I love the weather today');
             socialNetworking.submit('Alice -> I hate the weather tomorrow');
 
             const timeLine = socialNetworking.submit('Alice');
             timeLine.should.equal(
                 'I hate the weather tomorrow (1 second ago)\n' +
-                'I love the weather today (2 seconds ago)');
-            done();
-        }, 1000);
+                'I love the weather today (1 second ago)');
+        });
+
+        it('should record time of message', function (done) {
+            const socialNetworking = new SocialNetworking();
+
+            socialNetworking.submit('Alice -> I love the weather today');
+            setTimeout(function () {
+
+                socialNetworking.submit('Alice -> I hate the weather tomorrow');
+
+                const timeLine = socialNetworking.submit('Alice');
+                timeLine.should.equal(
+                    'I hate the weather tomorrow (1 second ago)\n' +
+                    'I love the weather today (2 seconds ago)');
+                done();
+            }, 1000);
+
+        });
+
+        it('should publish two messages of different users', function () {
+            const socialNetworking = new SocialNetworking();
+
+            socialNetworking.submit('Alice -> I love the weather today');
+            socialNetworking.submit('Bob -> I hate the weather tomorrow');
+
+            const timeLine = socialNetworking.submit('Alice');
+            timeLine.should.equal('I love the weather today (1 second ago)');
+        });
+
+        it('should show timeline of any user', function () {
+            const socialNetworking = new SocialNetworking();
+
+            socialNetworking.submit('Alice -> I love the weather today');
+            socialNetworking.submit('Bob -> I hate the weather tomorrow');
+
+            const timeLine = socialNetworking.submit('Non_existing_user');
+            timeLine.should.equal('');
+        });
+
+        it('should not publish empty message', function () {
+            const socialNetworking = new SocialNetworking();
+
+            socialNetworking.submit('Alice -> ');
+            socialNetworking.submit('Alice ->  ');
+
+            const timeLine = socialNetworking.submit('Alice');
+            timeLine.should.equal('');
+        });
 
     });
 
-    it('should publish two messages of different users', function() {
+    it('should report invalid input', function () {
         const socialNetworking = new SocialNetworking();
 
-        socialNetworking.submit('Alice -> I love the weather today');
-        socialNetworking.submit('Bob -> I hate the weather tomorrow');
+        const error = socialNetworking.submit('Alice blabla');
 
-        const timeLine = socialNetworking.submit('Alice');
-        timeLine.should.equal('I love the weather today (1 second ago)');
+        error.should.equal('Invalid command: Alice blabla');
     });
 
-    it('should show timeline of any user', function() {
-        const socialNetworking = new SocialNetworking();
+    describe('Following other Users', function () {
+        //it('should display empty wall', function () {
+        //    const socialNetworking = new SocialNetworking();
+        //
+        //    const wall = socialNetworking.submit('Alice wall');
+        //    wall.should.equal('');
+        //});
 
-        socialNetworking.submit('Alice -> I love the weather today');
-        socialNetworking.submit('Bob -> I hate the weather tomorrow');
-
-        const timeLine = socialNetworking.submit('Non existing user');
-        timeLine.should.equal('');
-    });
-
-    it('should not publish empty message', function() {
-        const socialNetworking = new SocialNetworking();
-
-        socialNetworking.submit('Alice ->');
-        socialNetworking.submit('Alice -> ');
-        socialNetworking.submit('Alice ->  ');
-
-        const timeLine = socialNetworking.submit('Alice');
-        timeLine.should.equal('');
+        //it('should display message of followed user', function () {
+        //    const socialNetworking = new SocialNetworking();
+        //
+        //    socialNetworking.submit('Alice follows Bob');
+        //    socialNetworking.submit('Bob -> The weather is nice today!');
+        //
+        //    const wall = socialNetworking.submit('Alice wall');
+        //    wall.should.equal('Bob - The weather is nice today! (1 second ago)');
+        //});
     });
 });
+//TODO: Only see messages after follows command in wall

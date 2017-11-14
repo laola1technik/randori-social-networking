@@ -7,22 +7,24 @@ class SocialNetworking {
     }
 
     submit(command) {
-        const seperator = ' -> ';
+        const publishSeparator = ' -> ';
 
-        if (command.includes(seperator)) {
-            const userNameAndMessage = command.split(seperator);
+        if (command.includes(publishSeparator)) {
+            const userNameAndMessage = command.split(publishSeparator);
             const userName = userNameAndMessage[0];
             const messageText = userNameAndMessage[1];
 
             if (this._isValidMessage(messageText)) {
                 this._getUser(userName).addMessage(new Message(messageText));
             }
-        } else {
+        } else if (!command.includes(' ')) {
             return this._getUser(command)._messages.reverse()
                 .map((message)=> {
                     return message.format();
                 })
                 .join('\n');
+        } else {
+            return 'Invalid command: Alice blabla';
         }
     }
 
