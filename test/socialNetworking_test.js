@@ -60,4 +60,15 @@ describe('Social Networking', function () {
         const timeLine = socialNetworking.submit('Non existing user');
         timeLine.should.equal('');
     });
+
+    it('should not publish empty message', function() {
+        const socialNetworking = new SocialNetworking();
+
+        socialNetworking.submit('Alice ->');
+        socialNetworking.submit('Alice -> ');
+        socialNetworking.submit('Alice ->  ');
+
+        const timeLine = socialNetworking.submit('Alice');
+        timeLine.should.equal('');
+    });
 });

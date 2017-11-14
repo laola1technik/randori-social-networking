@@ -8,9 +8,15 @@ class SocialNetworking {
 
     submit(command) {
         const seperator = ' -> ';
+
         if (command.includes(seperator)) {
             const userNameAndMessage = command.split(seperator);
-            this._getUser(userNameAndMessage[0]).addMessage(new Message(userNameAndMessage[1]));
+            const userName = userNameAndMessage[0];
+            const messageText = userNameAndMessage[1];
+
+            if (this._isValidMessage(messageText)) {
+                this._getUser(userName).addMessage(new Message(messageText));
+            }
         } else {
             return this._getUser(command)._messages.reverse()
                 .map((message)=> {
@@ -18,6 +24,10 @@ class SocialNetworking {
                 })
                 .join('\n');
         }
+    }
+
+    _isValidMessage(text) {
+        return text.trim().length > 0;
     }
 
     _getUser(name) {

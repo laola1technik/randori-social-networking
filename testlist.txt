@@ -3,5 +3,4 @@ Posting / Reading
 
 * relative timestamp should show minutes / seconds since creation
 * minutes / hours / "some time ago"
-* post empty message ignored
-* error handling: invalid commands
+* error handling: invalid commands (partial, e.g.: Alice ->)
