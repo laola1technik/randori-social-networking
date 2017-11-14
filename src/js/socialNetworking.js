@@ -38,7 +38,7 @@ class SocialNetworking {
             const userNameAndMessage = command.split(seperator);
             this._getUser(userNameAndMessage[0]).addMessage(new Message(userNameAndMessage[1]));
         } else {
-            return this._getUser("Alice")._messages.reverse()
+            return this._getUser(command)._messages.reverse()
                 .map((message)=> {
                     return message.format();
                 })

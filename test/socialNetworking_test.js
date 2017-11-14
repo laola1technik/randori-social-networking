@@ -50,4 +50,14 @@ describe('Social Networking', function () {
         const timeLine = socialNetworking.submit('Alice');
         timeLine.should.equal('I love the weather today (1 second ago)');
     });
+
+    it('should show timeline of any user', function() {
+        const socialNetworking = new SocialNetworking();
+
+        socialNetworking.submit('Alice -> I love the weather today');
+        socialNetworking.submit('Bob -> I hate the weather tomorrow');
+
+        const timeLine = socialNetworking.submit('Non existing user');
+        timeLine.should.equal('');
+    });
 });
