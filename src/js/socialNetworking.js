@@ -1,15 +1,5 @@
 const Message = require('message.js');
-
-class User {
-    constructor(name) {
-        this._name = name;
-        this._messages = [];
-    }
-
-    addMessage(message){
-        this._messages.push(message);
-    }
-}
+const User = require('user.js');
 
 class SocialNetworking {
     constructor() {

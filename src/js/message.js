@@ -1,4 +1,4 @@
-module.exports = class Message {
+class Message {
     constructor(text) {
         this.text = text;
         this.timestamp = new Date();
@@ -14,4 +14,6 @@ module.exports = class Message {
         const now = new Date();
         return Math.floor((now.getTime() - this.timestamp.getTime()) / 1000) + 1;
     }
-};
+}
+
+module.exports = Message;
