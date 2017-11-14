@@ -7,3 +7,4 @@ Posting / Reading
 * minutes / hours / "some time ago"
 * see timeline of non-existing user
 * post empty message ignored
+* error handling: invalid commands

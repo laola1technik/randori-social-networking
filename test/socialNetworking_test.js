@@ -40,5 +40,14 @@ describe('Social Networking', function () {
         }, 1000);
 
     });
-    //TODO: different user
+
+    it('should publish two messages of different users', function() {
+        const socialNetworking = new SocialNetworking();
+
+        socialNetworking.submit('Alice -> I love the weather today');
+        socialNetworking.submit('Bob -> I hate the weather tomorrow');
+
+        const timeLine = socialNetworking.submit('Alice');
+        timeLine.should.equal('I love the weather today (1 second ago)');
+    });
 });
