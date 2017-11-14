@@ -1,10 +1,7 @@
 Posting / Reading
 -----------------
 
-* posting should create a new user if not exists
-* multiple posts should generate an equivalent number of post lines
 * relative timestamp should show minutes / seconds since creation
 * minutes / hours / "some time ago"
-* see timeline of non-existing user
 * post empty message ignored
 * error handling: invalid commands
