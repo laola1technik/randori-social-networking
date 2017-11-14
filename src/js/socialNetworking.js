@@ -24,7 +24,7 @@ class SocialNetworking {
                 })
                 .join('\n');
         } else {
-            return 'Invalid command: Alice blabla';
+            return 'Invalid command: Alice blabla'; //TODO: command
         }
     }
 
