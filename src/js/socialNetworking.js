@@ -9,7 +9,7 @@ class SocialNetworking {
     submit(command) {
         const publishSeparator = ' -> ';
 
-        if (command.includes(publishSeparator)) {
+        if (this.post(command, publishSeparator)) {
             const userNameAndMessage = command.split(publishSeparator);
             const userName = userNameAndMessage[0];
             const messageText = userNameAndMessage[1];
@@ -17,17 +17,29 @@ class SocialNetworking {
             if (this._isValidMessage(messageText)) {
                 this._getUser(userName).addMessage(new Message(messageText));
             }
-        } else if (!command.includes(' ')) {
+        } else if (this.timeline(command)) {
             return this._getUser(command)._messages.reverse()
                 .map((message)=> {
                     return message.format();
                 })
                 .join('\n');
-        } else if(command.endsWith(' wall')) {
+        } else if(this.showWall(command)) {
             return '';
         } else {
             return `Invalid command: ${command}`;
         }
+    }
+
+    post(command, publishSeparator) {
+        return command.includes(publishSeparator);
+    }
+
+    timeline(command) {
+        return !command.includes(' ');
+    }
+
+    showWall(command) {
+        return command.endsWith(' wall');
     }
 
     _isValidMessage(text) {
