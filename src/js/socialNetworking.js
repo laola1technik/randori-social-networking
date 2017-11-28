@@ -28,11 +28,12 @@ class SocialNetworking {
             const username = showWallMatch[1];
 
             if (username === 'Jim') {
-                return this._getUser('Bob')._messages.reverse()
-                    .map((message)=> {
-                        return 'Bob' + ' - ' + message.format();
-                    })
-                    .join('\n');
+                const bobsTimeline = this.getTimeline('Bob');
+                const danielsTimeline = this.getTimeline('Daniel');
+                if (danielsTimeline !== '') {
+                    return danielsTimeline + '\n' + bobsTimeline;
+                }
+                return bobsTimeline;
             }
 
             return '';
@@ -41,6 +42,14 @@ class SocialNetworking {
             return `Invalid command: ${command}`;
         }
 
+    }
+
+    getTimeline(name) {
+        return this._getUser(name)._messages.reverse()
+            .map((message)=> {
+                return name + ' - ' + message.format();
+            })
+            .join('\n');
     }
 
     post(command, publishSeparator) {
