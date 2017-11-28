@@ -96,19 +96,21 @@ describe('Social Networking', function () {
             const socialNetworking = new SocialNetworking();
 
             const wall = socialNetworking.submit('Alice wall');
+
             wall.should.equal('');
         });
 
-        //it('should display message of followed user', function () {
-        //    const socialNetworking = new SocialNetworking();
-        //
-        //    socialNetworking.submit('Alice follows Bob');
-        //    socialNetworking.submit('Bob -> The weather is nice today!');
-        //
-        //    const wall = socialNetworking.submit('Alice wall');
-        //    wall.should.equal('Bob - The weather is nice today! (1 second ago)');
-        //});
+        it('should display message of followed user', function () {
+            const socialNetworking = new SocialNetworking();
+            socialNetworking.submit('Jim follows Bob');
+            socialNetworking.submit('Bob -> The weather is nice today!');
+
+            const wall = socialNetworking.submit('Jim wall');
+
+            wall.should.equal('Bob - The weather is nice today! (1 second ago)');
+        });
     });
 });
 //TODO: Only see messages after follows command in wall
 //TODO: typical problematic inputs like quote, single char, large input, etc...
+//TODO: message with " -> "

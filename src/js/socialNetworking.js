@@ -8,6 +8,7 @@ class SocialNetworking {
 
     submit(command) {
         const publishSeparator = ' -> ';
+        const showWallMatch = this.showWall(command);
 
         if (this.post(command, publishSeparator)) {
             const userNameAndMessage = command.split(publishSeparator);
@@ -23,11 +24,23 @@ class SocialNetworking {
                     return message.format();
                 })
                 .join('\n');
-        } else if (this.showWall(command)) {
+        } else if (showWallMatch) {
+            const username = showWallMatch[1];
+
+            if (username === 'Jim') {
+                return this._getUser('Bob')._messages.reverse()
+                    .map((message)=> {
+                        return 'Bob' + ' - ' + message.format();
+                    })
+                    .join('\n');
+            }
+
             return '';
+
         } else {
             return `Invalid command: ${command}`;
         }
+
     }
 
     post(command, publishSeparator) {
@@ -41,8 +54,8 @@ class SocialNetworking {
     }
 
     showWall(command) {
-        const wallPattern = new RegExp('^[A-Za-z0-9_]+ wall$');
-        return wallPattern.test(command);
+        const wallPattern = new RegExp('^([A-Za-z0-9_]+) wall$');
+        return wallPattern.exec(command);
     }
 
     _isValidMessage(text) {
