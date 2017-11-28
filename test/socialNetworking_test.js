@@ -83,6 +83,14 @@ describe('Social Networking', function () {
         error.should.equal('Invalid command: Alice blabla');
     });
 
+    it('should report invalid input containing command wall', function () {
+        const socialNetworking = new SocialNetworking();
+
+        const error = socialNetworking.submit('Alice wall wall wall');
+
+        error.should.equal('Invalid command: Alice wall wall wall');
+    });
+
     describe('Following other Users', function () {
         it('should display empty wall', function () {
             const socialNetworking = new SocialNetworking();

@@ -39,7 +39,8 @@ class SocialNetworking {
     }
 
     showWall(command) {
-        return command.endsWith(' wall');
+        const wallPattern = new RegExp('^\\w+ wall$');
+        return wallPattern.test(command);
     }
 
     _isValidMessage(text) {
