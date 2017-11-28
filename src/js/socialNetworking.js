@@ -23,8 +23,10 @@ class SocialNetworking {
                     return message.format();
                 })
                 .join('\n');
+        } else if(command.endsWith(' wall')) {
+            return '';
         } else {
-            return 'Invalid command: Alice blabla'; //TODO: command
+            return `Invalid command: ${command}`;
         }
     }
 

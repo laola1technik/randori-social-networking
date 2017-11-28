@@ -84,12 +84,12 @@ describe('Social Networking', function () {
     });
 
     describe('Following other Users', function () {
-        //it('should display empty wall', function () {
-        //    const socialNetworking = new SocialNetworking();
-        //
-        //    const wall = socialNetworking.submit('Alice wall');
-        //    wall.should.equal('');
-        //});
+        it('should display empty wall', function () {
+            const socialNetworking = new SocialNetworking();
+
+            const wall = socialNetworking.submit('Alice wall');
+            wall.should.equal('');
+        });
 
         //it('should display message of followed user', function () {
         //    const socialNetworking = new SocialNetworking();
