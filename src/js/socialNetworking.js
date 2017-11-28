@@ -23,7 +23,7 @@ class SocialNetworking {
                     return message.format();
                 })
                 .join('\n');
-        } else if(this.showWall(command)) {
+        } else if (this.showWall(command)) {
             return '';
         } else {
             return `Invalid command: ${command}`;
@@ -31,15 +31,17 @@ class SocialNetworking {
     }
 
     post(command, publishSeparator) {
-        return command.includes(publishSeparator);
+        const postPattern = new RegExp('^[A-Za-z0-9_]+ *' + publishSeparator + ' *.*$');
+        return postPattern.test(command);
     }
 
     timeline(command) {
-        return !command.includes(' ');
+        const userPattern = new RegExp('^[A-Za-z0-9_]+$');
+        return userPattern.test(command);
     }
 
     showWall(command) {
-        const wallPattern = new RegExp('^\\w+ wall$');
+        const wallPattern = new RegExp('^[A-Za-z0-9_]+ wall$');
         return wallPattern.test(command);
     }
 
