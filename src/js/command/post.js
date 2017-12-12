@@ -2,24 +2,25 @@ const Message = require('message.js');
 
 class Post {
 
-    constructor(){
-
+    constructor(socialNetworking) {
+        this._socialNetworking = socialNetworking;
+        this._publishSeparator = ' -> ';
     }
 
     matches(commandLine) {
-        const publishSeparator = ' -> ';
-        const postPattern = new RegExp('^[A-Za-z0-9_]+ *' + publishSeparator + ' *.*$');
-        return postPattern.test(commandLine);
+        const userPattern = '[A-Za-z0-9_]+';
+        const pattern = '^' + userPattern + ' *' + this._publishSeparator + ' *.*$';
+        const matcher = new RegExp(pattern);
+        return matcher.test(commandLine);
     }
 
-    execute(command, socialNetworking) {
-        const publishSeparator = ' -> ';
-        const userNameAndMessage = command.split(publishSeparator);
+    execute(command) {
+        const userNameAndMessage = command.split(this._publishSeparator);
         const userName = userNameAndMessage[0];
         const messageText = userNameAndMessage[1];
 
         if (this._isValidMessage(messageText)) {
-            socialNetworking._getUser(userName).addMessage(new Message(messageText));
+            this._socialNetworking._getUser(userName).addMessage(new Message(messageText));
         }
     }
 

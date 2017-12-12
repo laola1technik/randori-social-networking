@@ -8,10 +8,10 @@ class SocialNetworking {
 
     submit(command) {
         const showWallMatch = this.showWall(command);
-        const postCommand = new PostCommand();
+        const postCommand = new PostCommand(this);
 
         if (postCommand.matches(command)) {
-            return postCommand.execute(command, this);
+            return postCommand.execute(command);
         } else if (this.timeline(command)) {
             return this.doTimeline(command);
         } else if (showWallMatch) {
