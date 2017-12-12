@@ -70,4 +70,5 @@ class SocialNetworking {
 
 }
 
+// Todo: Extract Commands into Command Classes following the Design of Post.
 module.exports = SocialNetworking;
