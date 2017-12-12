@@ -1,5 +1,5 @@
-const Message = require('message.js');
 const User = require('user.js');
+const PostCommand = require('command/post.js');
 
 class SocialNetworking {
     constructor() {
@@ -7,11 +7,11 @@ class SocialNetworking {
     }
 
     submit(command) {
-        const publishSeparator = ' -> ';
         const showWallMatch = this.showWall(command);
+        const postCommand = new PostCommand();
 
-        if (this.post(command, publishSeparator)) {
-            this.doPost(command, publishSeparator);
+        if (postCommand.matches(command)) {
+            return postCommand.execute(command, this);
         } else if (this.timeline(command)) {
             return this.doTimeline(command);
         } else if (showWallMatch) {
@@ -81,10 +81,6 @@ class SocialNetworking {
     showWall(command) {
         const wallPattern = new RegExp('^([A-Za-z0-9_]+) wall$');
         return wallPattern.exec(command);
-    }
-
-    _isValidMessage(text) {
-        return text.trim().length > 0;
     }
 
     _getUser(name) {
