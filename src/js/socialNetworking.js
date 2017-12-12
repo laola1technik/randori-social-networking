@@ -11,37 +11,53 @@ class SocialNetworking {
         const showWallMatch = this.showWall(command);
 
         if (this.post(command, publishSeparator)) {
-            const userNameAndMessage = command.split(publishSeparator);
-            const userName = userNameAndMessage[0];
-            const messageText = userNameAndMessage[1];
-
-            if (this._isValidMessage(messageText)) {
-                this._getUser(userName).addMessage(new Message(messageText));
-            }
+            this.doPost(command, publishSeparator);
         } else if (this.timeline(command)) {
-            return this._getUser(command)._messages.reverse()
-                .map((message)=> {
-                    return message.format();
-                })
-                .join('\n');
+            return this.doTimeline(command);
         } else if (showWallMatch) {
-            const username = showWallMatch[1];
-
-            if (username === 'Jim') {
-                const bobsTimeline = this.getTimeline('Bob');
-                const danielsTimeline = this.getTimeline('Daniel');
-                if (danielsTimeline !== '') {
-                    return danielsTimeline + '\n' + bobsTimeline;
-                }
-                return bobsTimeline;
-            }
-
-            return '';
-
+            return this.doShowWall(showWallMatch);
         } else {
-            return `Invalid command: ${command}`;
+            return this.doInvalid(command);
+        }
+    }
+
+    doInvalid(command) {
+        return `Invalid command: ${command}`;
+    }
+
+    doShowWall(showWallMatch) {
+        const username = showWallMatch[1];
+
+        let ret = '';
+        if (username === 'Jim') {
+            const bobsTimeline = this.getTimeline('Bob');
+            const danielsTimeline = this.getTimeline('Daniel');
+            if (danielsTimeline !== '') {
+                ret = danielsTimeline + '\n' + bobsTimeline;
+            } else {
+                ret = bobsTimeline;
+            }
         }
 
+        return ret;
+    }
+
+    doTimeline(command) {
+        return this._getUser(command)._messages.reverse()
+            .map((message)=> {
+                return message.format();
+            })
+            .join('\n');
+    }
+
+    doPost(command, publishSeparator) {
+        const userNameAndMessage = command.split(publishSeparator);
+        const userName = userNameAndMessage[0];
+        const messageText = userNameAndMessage[1];
+
+        if (this._isValidMessage(messageText)) {
+            this._getUser(userName).addMessage(new Message(messageText));
+        }
     }
 
     getTimeline(name) {
