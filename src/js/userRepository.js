@@ -5,7 +5,7 @@ class UserRepository {
         this._users = new Map();
     }
 
-    _getUser(name) {
+    getUser(name) {
         if (!this._users.has(name)) {
             this._users.set(name, new User(name));
         }

@@ -43,34 +43,19 @@ class SocialNetworking {
     }
 
     doTimeline(command) {
-        return this.users._getUser(command)._messages.reverse()
+        return this.users.getUser(command)._messages.reverse()
             .map((message)=> {
                 return message.format();
             })
             .join('\n');
     }
 
-    doPost(command, publishSeparator) {
-        const userNameAndMessage = command.split(publishSeparator);
-        const userName = userNameAndMessage[0];
-        const messageText = userNameAndMessage[1];
-
-        if (this._isValidMessage(messageText)) {
-            this.users._getUser(userName).addMessage(new Message(messageText));
-        }
-    }
-
     getTimeline(name) {
-        return this.users._getUser(name)._messages.reverse()
+        return this.users.getUser(name)._messages.reverse()
             .map((message)=> {
                 return name + ' - ' + message.format();
             })
             .join('\n');
-    }
-
-    post(command, publishSeparator) {
-        const postPattern = new RegExp('^[A-Za-z0-9_]+ *' + publishSeparator + ' *.*$');
-        return postPattern.test(command);
     }
 
     timeline(command) {
@@ -82,7 +67,6 @@ class SocialNetworking {
         const wallPattern = new RegExp('^([A-Za-z0-9_]+) wall$');
         return wallPattern.exec(command);
     }
-
 
 }
 
