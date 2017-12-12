@@ -1,14 +1,14 @@
-const User = require('user.js');
 const PostCommand = require('command/post.js');
+const UserRepository = require('userRepository.js');
 
 class SocialNetworking {
     constructor() {
-        this._users = new Map();
+        this.users = new UserRepository();
     }
 
     submit(command) {
         const showWallMatch = this.showWall(command);
-        const postCommand = new PostCommand(this);
+        const postCommand = new PostCommand(this.users);
 
         if (postCommand.matches(command)) {
             return postCommand.execute(command);
@@ -43,7 +43,7 @@ class SocialNetworking {
     }
 
     doTimeline(command) {
-        return this._getUser(command)._messages.reverse()
+        return this.users._getUser(command)._messages.reverse()
             .map((message)=> {
                 return message.format();
             })
@@ -56,12 +56,12 @@ class SocialNetworking {
         const messageText = userNameAndMessage[1];
 
         if (this._isValidMessage(messageText)) {
-            this._getUser(userName).addMessage(new Message(messageText));
+            this.users._getUser(userName).addMessage(new Message(messageText));
         }
     }
 
     getTimeline(name) {
-        return this._getUser(name)._messages.reverse()
+        return this.users._getUser(name)._messages.reverse()
             .map((message)=> {
                 return name + ' - ' + message.format();
             })
@@ -83,12 +83,7 @@ class SocialNetworking {
         return wallPattern.exec(command);
     }
 
-    _getUser(name) {
-        if (!this._users.has(name)) {
-            this._users.set(name, new User(name));
-        }
-        return this._users.get(name);
-    }
+
 }
 
 module.exports = SocialNetworking;
