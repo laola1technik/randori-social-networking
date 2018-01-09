@@ -1,3 +1,4 @@
+const InvalidCommand = require('command/invalid.js');
 const PostCommand = require('command/post.js');
 const ReadCommand = require('command/read.js');
 const WallCommand = require('command/wall.js');
@@ -12,6 +13,7 @@ class SocialNetworking {
         const postCommand = new PostCommand(this.users);
         const readCommand = new ReadCommand(this.users);
         const wallCommand = new WallCommand(this.users);
+        const invalidCommand = new InvalidCommand();
 
         if (postCommand.matches(command)) {
             return postCommand.execute();
@@ -19,13 +21,9 @@ class SocialNetworking {
             return readCommand.execute();
         } else if (wallCommand.matches(command)) {
             return wallCommand.execute();
-        } else {
-            return this.doInvalid(command);
+        } else if (invalidCommand.matches(command)) {
+            return invalidCommand.execute();
         }
-    }
-
-    doInvalid(command) {
-        return `Invalid command: ${command}`;
     }
 }
 
