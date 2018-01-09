@@ -4,8 +4,15 @@ class User {
         this._messages = [];
     }
 
-    addMessage(message){
+    addMessage(message) {
         this._messages.push(message);
+    }
+
+    timeLine() {
+        return this._messages
+            .reverse()
+            .map(message => message.format())
+            .join('\n');
     }
 }
 

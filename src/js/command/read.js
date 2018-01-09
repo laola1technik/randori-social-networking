@@ -1,5 +1,3 @@
-const Message = require('message.js');
-
 class Read {
 
     constructor(users) {
@@ -25,12 +23,7 @@ class Read {
 
     execute() {
         const userName = this._userName;
-
-        return this._users.getUser(userName)._messages.reverse()
-            .map((message)=> {
-                return message.format();
-            })
-            .join('\n');
+        return this._users.getUser(userName).timeLine();
     }
 }
 

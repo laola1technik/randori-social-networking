@@ -44,8 +44,3 @@ Architectural Blocks
 --------------------
 * UI
 * Storage
-
-Design Ideas
-------------
-* Marko: Chain of responsibility design pattern for command parser
-* Corinna: "weak map" to make field really private
