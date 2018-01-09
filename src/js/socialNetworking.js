@@ -9,23 +9,18 @@ class SocialNetworking {
         this.users = new UserRepository();
     }
 
-    submit(command) {
-        const postCommand = new PostCommand(this.users);
-        const readCommand = new ReadCommand(this.users);
-        const wallCommand = new WallCommand(this.users);
-        const invalidCommand = new InvalidCommand();
+    submit(commandLine) {
+        const commands = [
+            new PostCommand(this.users),
+            new ReadCommand(this.users),
+            new WallCommand(this.users),
+            new InvalidCommand()
+        ];
 
-        if (postCommand.matches(command)) {
-            return postCommand.execute();
-        } else if (readCommand.matches(command)) {
-            return readCommand.execute();
-        } else if (wallCommand.matches(command)) {
-            return wallCommand.execute();
-        } else if (invalidCommand.matches(command)) {
-            return invalidCommand.execute();
-        }
+        return commands.find(command => {
+            return command.matches(commandLine);
+        }).execute();
     }
 }
 
-// Todo: Extract Commands into Command Classes following the Design of Post.
 module.exports = SocialNetworking;
