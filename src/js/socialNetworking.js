@@ -1,4 +1,5 @@
 const PostCommand = require('command/post.js');
+const ReadCommand = require('command/read.js');
 const UserRepository = require('userRepository.js');
 
 class SocialNetworking {
@@ -9,11 +10,12 @@ class SocialNetworking {
     submit(command) {
         const showWallMatch = this.showWall(command);
         const postCommand = new PostCommand(this.users);
+        const readCommand = new ReadCommand(this.users);
 
         if (postCommand.matches(command)) {
             return postCommand.execute(command);
-        } else if (this.timeline(command)) {
-            return this.doTimeline(command);
+        } else if (readCommand.matches(command)) {
+            return readCommand.execute(command);
         } else if (showWallMatch) {
             return this.doShowWall(showWallMatch);
         } else {
@@ -42,25 +44,12 @@ class SocialNetworking {
         return ret;
     }
 
-    doTimeline(command) {
-        return this.users.getUser(command)._messages.reverse()
-            .map((message)=> {
-                return message.format();
-            })
-            .join('\n');
-    }
-
     getTimeline(name) {
         return this.users.getUser(name)._messages.reverse()
             .map((message)=> {
                 return name + ' - ' + message.format();
             })
             .join('\n');
-    }
-
-    timeline(command) {
-        const userPattern = new RegExp('^[A-Za-z0-9_]+$');
-        return userPattern.test(command);
     }
 
     showWall(command) {
