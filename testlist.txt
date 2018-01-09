@@ -3,11 +3,18 @@ Posting / Reading
 
 * relative timestamp should show minutes / seconds since creation
 * minutes / hours / "some time ago"
-* error handling: invalid commands (partial, e.g.: Alice ->)
+* error handling: invalid commands (partial, e.g.: Alice ->) might work -> test
 
 Feedback
 --------
 
 * extract condition bodies earlier
 * implement follow as refactoring with only Bob
-* format of "message with username" within message
+
+Next Time
+---------
+
+* rename Timeline to Messages
+* drive messages with tests to merge and format with and without username
+* add few missing integration tests
+* look for missing code coverage

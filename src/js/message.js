@@ -18,6 +18,8 @@ class Message {
         const now = new Date();
         return Math.floor((now.getTime() - this._timestamp.getTime()) / 1000) + 1;
     }
+
+    //ToDo: format of "message with username" within message
 }
 
 module.exports = Message;
