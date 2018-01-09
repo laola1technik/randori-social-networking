@@ -1,18 +1,22 @@
 class Message {
     constructor(text) {
-        this.text = text;
-        this.timestamp = new Date();
+        this._text = text;
+        this._timestamp = new Date();
+    }
+
+    ofUser(userName){
+        this._userName = userName;
     }
 
     format() {
         const seconds = this._calculateTimeDifference();
         const unit = 'second' + (seconds > 1 ? 's' : '');
-        return `${this.text} (${seconds} ${unit} ago)`;
+        return `${this._text} (${seconds} ${unit} ago)`;
     }
 
     _calculateTimeDifference() {
         const now = new Date();
-        return Math.floor((now.getTime() - this.timestamp.getTime()) / 1000) + 1;
+        return Math.floor((now.getTime() - this._timestamp.getTime()) / 1000) + 1;
     }
 }
 

@@ -7,6 +7,7 @@ class User {
     }
 
     addMessage(message) {
+        message.ofUser(this._name);
         this._messages.push(message);
     }
 
