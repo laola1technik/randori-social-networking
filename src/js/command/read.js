@@ -23,7 +23,7 @@ class Read {
 
     execute() {
         const userName = this._userName;
-        return this._users.getUser(userName).timeLine();
+        return this._users.getUser(userName).timeLine().format();
     }
 }
 

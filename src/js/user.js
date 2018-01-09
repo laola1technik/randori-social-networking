@@ -1,3 +1,5 @@
+const TimeLine = require('timeLine.js');
+
 class User {
     constructor(name) {
         this._name = name;
@@ -9,10 +11,7 @@ class User {
     }
 
     timeLine() {
-        return this._messages
-            .reverse()
-            .map(message => message.format())
-            .join('\n');
+        return new TimeLine(this._messages);
     }
 }
 
