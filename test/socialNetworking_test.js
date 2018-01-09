@@ -43,7 +43,7 @@ describe('Social Networking', function () {
 
         });
 
-        it('should publish two messages of different users', function () {
+        it('should publish two messages of different _users', function () {
             const socialNetworking = new SocialNetworking();
 
             socialNetworking.submit('Alice -> I love the weather today');
@@ -110,7 +110,7 @@ describe('Social Networking', function () {
             wall.should.equal('Bob - The weather is nice today! (1 second ago)');
         });
 
-        it('should display message of all followed users', function () {
+        it('should display message of all followed _users', function () {
             const socialNetworking = new SocialNetworking();
             socialNetworking.submit('Jim follows Bob');
             socialNetworking.submit('Jim follows Daniel');
@@ -123,7 +123,7 @@ describe('Social Networking', function () {
                 + 'Bob - The weather is nice today! (1 second ago)');
         });
 
-        //it('should display message of all followed users in right order', function (done) {
+        //it('should display message of all followed _users in right order', function (done) {
         //    const socialNetworking = new SocialNetworking();
         //    socialNetworking.submit('Jim follows Bob');
         //    socialNetworking.submit('Jim follows Daniel');
