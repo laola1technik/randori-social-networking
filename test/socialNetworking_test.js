@@ -110,7 +110,7 @@ describe('Social Networking', function () {
             wall.should.equal('Bob - The weather is nice today! (1 second ago)');
         });
 
-        it('should display message of all followed _users', function () {
+        it('should display message of all followed users', function () {
             const socialNetworking = new SocialNetworking();
             socialNetworking.submit('Jim follows Bob');
             socialNetworking.submit('Jim follows Daniel');
@@ -121,6 +121,17 @@ describe('Social Networking', function () {
 
             wall.should.equal('Daniel - The weather is great! (1 second ago)\n'
                 + 'Bob - The weather is nice today! (1 second ago)');
+        });
+
+        it('should only display messages of followed users', function () {
+            const socialNetworking = new SocialNetworking();
+            socialNetworking.submit('Jim follows Bob');
+            socialNetworking.submit('Bob -> The weather is nice today!');
+            socialNetworking.submit('Daniel -> The weather is great!');
+
+            const wall = socialNetworking.submit('Jim wall');
+
+            wall.should.equal('Bob - The weather is nice today! (1 second ago)');
         });
 
         //it('should display message of all followed _users in right order', function (done) {

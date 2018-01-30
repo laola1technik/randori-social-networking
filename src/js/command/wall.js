@@ -26,15 +26,13 @@ class Wall {
     execute() {
         const username = this._userName;
 
+        const folowers = this._users.getUser(username)._follows;
+
         let ret = '';
         if (username === 'Jim') {
-            const bobsTimeline = this.getTimeline('Bob');
-            const danielsTimeline = this.getTimeline('Daniel');
-            if (danielsTimeline !== '') {
-                ret = bobsTimeline.merge(danielsTimeline).format(true);
-            } else {
-                ret = bobsTimeline.format(true);
-            }
+            ret = folowers.map(name => this.getTimeline(name))
+                .reduce((merged, timeLine) => merged.merge(timeLine))
+                .format(true);
         }
 
         return ret;
