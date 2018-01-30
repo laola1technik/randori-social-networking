@@ -13,7 +13,9 @@ class User {
     }
 
     subscribeTo(user) {
-        this._subscriptions.push(user);
+        if (!this._subscriptions.includes(user)) {
+            this._subscriptions.push(user);
+        }
     }
 
     get subscriptions() {

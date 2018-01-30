@@ -134,6 +134,17 @@ describe('Social Networking', function () {
             wall.should.equal('Bob - The weather is nice today! (1 second ago)');
         });
 
+        it('should follow users only once', function () {
+            const socialNetworking = new SocialNetworking();
+            socialNetworking.submit('Jim follows Bob');
+            socialNetworking.submit('Jim follows Bob');
+            socialNetworking.submit('Bob -> The weather is nice today!');
+
+            const wall = socialNetworking.submit('Jim wall');
+
+            wall.should.equal('Bob - The weather is nice today! (1 second ago)');
+        });
+
         //it('should display message of all followed _users in right order', function (done) {
         //    const socialNetworking = new SocialNetworking();
         //    socialNetworking.submit('Jim follows Bob');
