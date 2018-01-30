@@ -1,4 +1,5 @@
 const Message = require('message.js');
+const TimeLine = require('timeLine.js');
 
 class Wall {
 
@@ -25,17 +26,11 @@ class Wall {
 
     execute() {
         const username = this._userName;
+        const beingFollowed = this._users.getUser(username)._follows;
 
-        const folowers = this._users.getUser(username)._follows;
-
-        let ret = '';
-        if (username === 'Jim') {
-            ret = folowers.map(name => this.getTimeline(name))
-                .reduce((merged, timeLine) => merged.merge(timeLine))
-                .format(true);
-        }
-
-        return ret;
+        return beingFollowed.map(name => this.getTimeline(name))
+            .reduce((merged, timeLine) => merged.merge(timeLine), new TimeLine([]))
+            .format(true);
     }
 
     getTimeline(name) {
