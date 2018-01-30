@@ -41,11 +41,7 @@ class Wall {
     }
 
     getTimeline(name) {
-        return this._users.getUser(name)._messages.reverse()
-            .map((message)=> {
-                return name + ' - ' + message.format();
-            })
-            .join('\n');
+        return this._users.getUser(name).timeLine().format(true);
     }
 }
 

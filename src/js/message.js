@@ -4,13 +4,16 @@ class Message {
         this._timestamp = new Date();
     }
 
-    ofUser(userName){
+    ofUser(userName) {
         this._userName = userName;
     }
 
-    format() {
+    format(showName) {
         const seconds = this._calculateTimeDifference();
         const unit = 'second' + (seconds > 1 ? 's' : '');
+        if (showName) {
+            return `${this._userName} - ${this._text} (${seconds} ${unit} ago)`;
+        }
         return `${this._text} (${seconds} ${unit} ago)`;
     }
 

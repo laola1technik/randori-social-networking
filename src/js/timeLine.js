@@ -3,10 +3,10 @@ class TimeLine {
         this._messages = messages;
     }
 
-    format() {
+    format(showName = false) {
         return this._messages
             .reverse()
-            .map(message => message.format())
+            .map(message => message.format(showName))
             .join('\n');
     }
 }
