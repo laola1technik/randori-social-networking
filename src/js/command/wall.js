@@ -31,9 +31,9 @@ class Wall {
             const bobsTimeline = this.getTimeline('Bob');
             const danielsTimeline = this.getTimeline('Daniel');
             if (danielsTimeline !== '') {
-                ret = danielsTimeline + '\n' + bobsTimeline;
+                ret = bobsTimeline.merge(danielsTimeline).format(true);
             } else {
-                ret = bobsTimeline;
+                ret = bobsTimeline.format(true);
             }
         }
 
@@ -41,7 +41,7 @@ class Wall {
     }
 
     getTimeline(name) {
-        return this._users.getUser(name).timeLine().format(true);
+        return this._users.getUser(name).timeLine();
     }
 }
 
