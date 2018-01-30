@@ -9,8 +9,8 @@ class Follow {
         const match = matcher.exec(commandLine);
 
         if (match) {
-            this._userName = match[1];
-            this._userName2 = match[2];
+            this._subscriber = match[1];
+            this._targetUserName = match[2];
             return true;
         }
 
@@ -18,14 +18,14 @@ class Follow {
     }
 
     get _pattern() {
-        const user = '([A-Za-z0-9_]+)';//TODO: regex duplicated
+        const user = '([A-Za-z0-9_]+)';  //TODO: regex duplicated
         return '^' + user + ' +follows +' + user + ' *$';
     }
 
     execute() {
-        const userName = this._userName;
-        const userName2 = this._userName2;
-        this._users.getUser(userName).follows(userName2);
+        const subscriber = this._subscriber;
+        const targetUserName = this._targetUserName;
+        this._users.getUser(subscriber).subscribeTo(targetUserName);
     }
 }
 

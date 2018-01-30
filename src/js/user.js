@@ -4,7 +4,7 @@ class User {
     constructor(name) {
         this._name = name;
         this._messages = [];
-        this._follows = [];
+        this._subscriptions = [];
     }
 
     addMessage(message) {
@@ -12,8 +12,12 @@ class User {
         this._messages.push(message);
     }
 
-    follows(user) {
-        this._follows.push(user);
+    subscribeTo(user) {
+        this._subscriptions.push(user);
+    }
+
+    get subscriptions() {
+        return this._subscriptions;
     }
 
     timeLine() {
