@@ -166,6 +166,5 @@ describe('Social Networking', function () {
         //});
     });
 });
-//TODO: Only see messages after follows command in wall
 //TODO: typical problematic inputs like quote, single char, large input, etc...
 //TODO: message with " -> "
