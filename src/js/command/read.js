@@ -17,7 +17,7 @@ class Read {
     }
 
     get _pattern() {
-        const user = '([A-Za-z0-9_]+)';//TODO: regex duplicated
+        const user = '([A-Za-z0-9_]+)'; //TODO: regex duplicated, extract custom matcher/command parser
         return '^' + user + ' *$';
     }
 

@@ -6,7 +6,7 @@ describe('Social Networking', function () {
 
     describe('Publishing Messages', function () {
         it('should publish message', function () {
-            const socialNetworking = new SocialNetworking();
+            const socialNetworking = new SocialNetworking(); //TODO: extract
 
             socialNetworking.submit('Alice -> I love the weather today');
 
@@ -17,7 +17,7 @@ describe('Social Networking', function () {
         it('should publish two messages', function () {
             const socialNetworking = new SocialNetworking();
 
-            socialNetworking.submit('Alice -> I love the weather today');
+            socialNetworking.submit('Alice -> I love the weather today'); //TODO: maybe duplicated
             socialNetworking.submit('Alice -> I hate the weather tomorrow');
 
             const timeLine = socialNetworking.submit('Alice');

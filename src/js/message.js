@@ -11,10 +11,11 @@ class Message {
     format(showName) {
         const seconds = this._calculateTimeDifference();
         const unit = 'second' + (seconds > 1 ? 's' : '');
+        const messageWithTimestamp = `${this._text} (${seconds} ${unit} ago)`;
         if (showName) {
-            return `${this._userName} - ${this._text} (${seconds} ${unit} ago)`;
+            return `${this._userName} - ${messageWithTimestamp}`;
         }
-        return `${this._text} (${seconds} ${unit} ago)`;
+        return messageWithTimestamp;
     }
 
     _calculateTimeDifference() {

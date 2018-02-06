@@ -18,7 +18,7 @@ class Follow {
     }
 
     get _pattern() {
-        const user = '([A-Za-z0-9_]+)';  //TODO: regex duplicated
+        const user = '([A-Za-z0-9_]+)';
         return '^' + user + ' +follows +' + user + ' *$';
     }
 
