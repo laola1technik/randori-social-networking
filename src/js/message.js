@@ -21,6 +21,10 @@ class Message {
         const now = new Date();
         return Math.floor((now.getTime() - this._timestamp.getTime()) / 1000) + 1;
     }
+
+    compareTimeDifference(other) {
+        return other._timestamp.getTime() - this._timestamp.getTime();
+    }
 }
 
 module.exports = Message;
