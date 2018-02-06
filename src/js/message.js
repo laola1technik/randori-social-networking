@@ -23,7 +23,7 @@ class Message {
     }
 
     compareTimeDifference(other) {
-        return other._timestamp.getTime() - this._timestamp.getTime();
+        return this._timestamp.getTime() - other._timestamp.getTime();
     }
 }
 
