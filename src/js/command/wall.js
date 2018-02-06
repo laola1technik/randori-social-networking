@@ -29,7 +29,7 @@ class Wall {
 
         return subscriptions.map(name => this._users.getUser(name))
             .map(user => user.timeLine())
-            .reduce((merged, timeLine) => merged.merge(timeLine), new TimeLine([]))
+            .reduce((mergedTimeLines, nextTimeLine) => mergedTimeLines.merge(nextTimeLine), new TimeLine([]))
             .format(true);
     }
 
