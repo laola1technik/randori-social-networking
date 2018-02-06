@@ -1,4 +1,4 @@
-class TimeLine {
+class TimeLine { // TODO: Maybe rename to Messages
     constructor(messages) {
         this._messages = messages;
     }

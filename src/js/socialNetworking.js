@@ -7,12 +7,12 @@ const UserRepository = require('userRepository.js');
 
 class SocialNetworking {
     constructor() {
-        this._users = new UserRepository();
+        const users = new UserRepository();
         this._commands = [
-            new PostCommand(this._users),
-            new ReadCommand(this._users),
-            new WallCommand(this._users),
-            new FollowCommand(this._users)
+            new PostCommand(users),
+            new ReadCommand(users),
+            new WallCommand(users),
+            new FollowCommand(users)
         ];
         this._commands.push(new InvalidCommand());  //catch all last command
     }
