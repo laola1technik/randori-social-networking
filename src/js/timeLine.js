@@ -11,8 +11,13 @@ class TimeLine {
     }
 
     merge(timeLine) {
-        return new TimeLine(this._messages.concat(timeLine._messages));
+        const messages = this._messages.concat(timeLine._messages);
+        const sortedMessages = messages.sort((a, b) => {
+            return b._timestamp.getTime() - a._timestamp.getTime();
+        });
+        return new TimeLine(sortedMessages);
     }
+
 }
 
 module.exports = TimeLine;

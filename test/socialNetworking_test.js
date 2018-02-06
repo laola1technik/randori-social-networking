@@ -147,7 +147,27 @@ describe('Social Networking', function () {
             wall.should.equal('Bob - The weather is nice today! (1 second ago)');
         });
 
-       // it('should display message of all followed users in right order', function (done) {
+        it('should display message of all followed users in right order', function (done) {
+            const socialNetworking = new SocialNetworking();
+
+            socialNetworking.submit('Jim follows Bob');
+            socialNetworking.submit('Jim follows Daniel');
+            socialNetworking.submit('Bob -> The weather is nice today!');
+
+            setTimeout(function () {
+                socialNetworking.submit('Daniel -> The weather is great!');
+                const wall = socialNetworking.submit('Jim wall');
+
+                wall.should.equal(
+                    'Bob - The weather is nice today! (1 second ago)\n' +
+                    'Daniel - The weather is great! (1 second ago)'
+                );
+                done();
+            }, 10);
+        });
+
+
+        // it('should display message of all followed users in right order', function (done) {
        //     const socialNetworking = new SocialNetworking();
        //     socialNetworking.submit('Jim follows Bob');
        //     socialNetworking.submit('Jim follows Daniel');
