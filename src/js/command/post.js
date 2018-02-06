@@ -9,6 +9,7 @@ class Post {
     matches(commandLine) {
         const matcher = new RegExp(this._pattern);
         const match = matcher.exec(commandLine);
+
         if (match) {
             this._userName = match[1];
             this._messageText = match[2];

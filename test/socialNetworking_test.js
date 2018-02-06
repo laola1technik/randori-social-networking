@@ -43,7 +43,7 @@ describe('Social Networking', function () {
 
         });
 
-        it('should publish two messages of different _users', function () {
+        it('should publish two messages of different users', function () {
             const socialNetworking = new SocialNetworking();
 
             socialNetworking.submit('Alice -> I love the weather today');
@@ -119,8 +119,10 @@ describe('Social Networking', function () {
 
             const wall = socialNetworking.submit('Jim wall');
 
-            wall.should.equal('Daniel - The weather is great! (1 second ago)\n'
-                + 'Bob - The weather is nice today! (1 second ago)');
+            wall.should.equal(
+                'Daniel - The weather is great! (1 second ago)\n' +
+                'Bob - The weather is nice today! (1 second ago)'
+            );
         });
 
         it('should only display messages of followed users', function () {
@@ -145,25 +147,27 @@ describe('Social Networking', function () {
             wall.should.equal('Bob - The weather is nice today! (1 second ago)');
         });
 
-        //it('should display message of all followed _users in right order', function (done) {
-        //    const socialNetworking = new SocialNetworking();
-        //    socialNetworking.submit('Jim follows Bob');
-        //    socialNetworking.submit('Jim follows Daniel');
-        //    socialNetworking.submit('Bob -> The weather is nice today!');
-        //    setTimeout(function () {
-        //        socialNetworking.submit('Daniel -> The weather is great!');
-        //        setTimeout(function () {
-        //            socialNetworking.submit('Bob -> Indeed!');
-        //
-        //            const wall = socialNetworking.submit('Jim wall');
-        //
-        //            wall.should.equal('Bob - Indeed! (1 second ago)\n' +
-        //                'Daniel - The weather is great! (2 seconds ago)\n' +
-        //                'Bob - The weather is nice today! (3 seconds ago)');
-        //            done();
-        //        }, 1000);
-        //    }, 1000);
-        //});
+       // it('should display message of all followed users in right order', function (done) {
+       //     const socialNetworking = new SocialNetworking();
+       //     socialNetworking.submit('Jim follows Bob');
+       //     socialNetworking.submit('Jim follows Daniel');
+       //     socialNetworking.submit('Bob -> The weather is nice today!');
+       //     setTimeout(function () {
+       //         socialNetworking.submit('Daniel -> The weather is great!');
+       //         setTimeout(function () {
+       //             socialNetworking.submit('Bob -> Indeed!');
+//
+       //             const wall = socialNetworking.submit('Jim wall');
+//
+       //             wall.should.equal(
+       //                 'Bob - Indeed! (1 second ago)\n' +
+       //                 'Daniel - The weather is great! (2 seconds ago)\n' +
+       //                 'Bob - The weather is nice today! (3 seconds ago)'
+       //             );
+       //             done();
+       //         }, 1000);
+       //     }, 1000);
+       // });
     });
 });
 //TODO: typical problematic inputs like quote, single char, large input, etc...
