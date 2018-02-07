@@ -6,7 +6,7 @@ describe('Social Networking', function () {
 
     describe('Publishing Messages', function () {
         it('should publish message', function () {
-            const socialNetworking = new SocialNetworking(); //TODO: extract
+            const socialNetworking = new SocialNetworking(); // TODO: extract to before method
 
             socialNetworking.submit('Alice -> I love the weather today');
 
@@ -17,7 +17,7 @@ describe('Social Networking', function () {
         it('should publish two messages', function () {
             const socialNetworking = new SocialNetworking();
 
-            socialNetworking.submit('Alice -> I love the weather today'); //TODO: maybe duplicated
+            socialNetworking.submit('Alice -> I love the weather today'); // TODO: maybe duplicated, create second context "Two Messages"
             socialNetworking.submit('Alice -> I hate the weather tomorrow');
 
             const timeLine = socialNetworking.submit('Alice');
@@ -166,7 +166,6 @@ describe('Social Networking', function () {
             }, 10);
         });
 
-
         it('should display message of all followed users in right order', function (done) {
             const socialNetworking = new SocialNetworking();
             socialNetworking.submit('Jim follows Bob');
@@ -185,10 +184,13 @@ describe('Social Networking', function () {
                         'Bob - The weather is nice today! (1 second ago)'
                     );
                     done();
-                }, 50);
-            }, 50);
+                }, 10);
+            }, 10);
         });
+
     });
+
 });
-//TODO: typical problematic inputs like quote, single char, large input, etc...
-//TODO: message with " -> "
+
+// TODO: test for typical problematic inputs like quote, single char, large input, etc...
+// TODO: test for message ends with " ->" and " -> "

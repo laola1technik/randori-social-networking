@@ -1,7 +1,8 @@
 class Message {
+
     constructor(text) {
         this._text = text;
-        this._timestamp = new Date();
+        this._timestamp = new Date(); // TODO: refactor out dependency to time, hard to test
     }
 
     ofUser(userName) {

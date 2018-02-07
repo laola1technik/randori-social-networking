@@ -1,6 +1,7 @@
 const TimeLine = require('timeLine.js');
 
 class User {
+
     constructor(name) {
         this._name = name;
         this._messages = [];

@@ -1,6 +1,7 @@
 const User = require('user.js');
 
-class UserRepository { // TODO: Maybe rename to Users
+class UserRepository { // TODO: rename to Users
+
     constructor() {
         this._users = new Map();
     }

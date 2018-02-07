@@ -7,7 +7,7 @@ class Post {
     }
 
     matches(commandLine) {
-        const matcher = new RegExp(this._pattern);
+        const matcher = new RegExp(this._pattern); // TODO: matcher duplicated, extract custom matcher/command parser
         const match = matcher.exec(commandLine);
 
         if (match) {
@@ -20,7 +20,7 @@ class Post {
     }
 
     get _pattern() {
-        const user = '([A-Za-z0-9_]+)';
+        const user = '([A-Za-z0-9_]+)'; // TODO: regex duplicated
         const separator = ' -> ';
         const message = '(.*)';
         return '^' + user + ' *' + separator + ' *' + message + '$';

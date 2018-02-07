@@ -6,6 +6,7 @@ const FollowCommand = require('command/follow.js');
 const UserRepository = require('userRepository.js');
 
 class SocialNetworking {
+
     constructor() {
         const users = new UserRepository();
         this._commands = [
@@ -14,7 +15,8 @@ class SocialNetworking {
             new WallCommand(users),
             new FollowCommand(users)
         ];
-        this._commands.push(new InvalidCommand());  //catch all last command
+        // last command to catch all
+        this._commands.push(new InvalidCommand());
     }
 
     submit(commandLine) {
