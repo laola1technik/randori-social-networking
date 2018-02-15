@@ -5,10 +5,14 @@ module.exports = function (config) {
             'test/*.js'
         ],
         testRunner: 'mocha',
-    mutator: 'es5',
-    transpilers: [],
+        mutator: 'javascript',
+        transpilers: ['babel'],
         reporter: ['clear-text', 'progress'],
         testFramework: 'mocha',
-    coverageAnalysis: 'perTest'
+        coverageAnalysis: 'off',
+        babelConfig: {
+            "presets": ["env"],
+            "plugins": ["transform-object-rest-spread"]
+        }
     });
 };
