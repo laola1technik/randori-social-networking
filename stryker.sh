@@ -1,2 +1,2 @@
 #!/bin/sh
-./node_modules/.bin/stryker run $@
+NODE_PATH=./src/js/ ./node_modules/.bin/stryker run $@
