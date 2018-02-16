@@ -9,9 +9,9 @@
   "readmeFilename": "README.md",
   "scripts": {
     "start": "webpack --config webpack.config.js",
-    "test": "NODE_PATH=./src/js/ ./node_modules/mocha/bin/mocha",
-    "test-nyc": "NODE_PATH=./src/js/ nyc ./node_modules/mocha/bin/mocha",
-    "test-nyc-html": "NODE_PATH=./src/js/ nyc --reporter=html ./node_modules/mocha/bin/mocha"
+    "test": "cross-env NODE_PATH=./src/js/ ./node_modules/mocha/bin/mocha",
+    "test-nyc": "cross-env NODE_PATH=./src/js/ nyc ./node_modules/mocha/bin/mocha",
+    "test-nyc-html": "cross-env NODE_PATH=./src/js/ nyc --reporter=html ./node_modules/mocha/bin/mocha"
   },
   "dependencies": {},
   "devDependencies": {
