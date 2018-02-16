@@ -3,13 +3,15 @@
   "description": "Randori to learn ES6 features and JS Testing.",
   "repository": {
     "type": "git",
-    "url": " https://github.com/laola1technik/randori-es6.git"
+    "url": "https://github.com/laola1technik/randori-social-networking.git"
   },
   "license": "BSD-3-Clause",
   "readmeFilename": "README.md",
   "scripts": {
     "start": "webpack --config webpack.config.js",
-    "test": "NODE_PATH=./src/js/ ./node_modules/mocha/bin/mocha"
+    "test": "NODE_PATH=./src/js/ ./node_modules/mocha/bin/mocha",
+    "test-nyc": "NODE_PATH=./src/js/ nyc ./node_modules/mocha/bin/mocha",
+    "test-nyc-html": "NODE_PATH=./src/js/ nyc --reporter=html ./node_modules/mocha/bin/mocha"
   },
   "dependencies": {},
   "devDependencies": {
