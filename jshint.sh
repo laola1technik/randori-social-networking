@@ -1,2 +1,2 @@
 #!/bin/sh
-./node_modules/.bin/jshint -c .jshintrc src test
+./node_modules/jshint/bin/jshint src/**/*.js test/*.js
