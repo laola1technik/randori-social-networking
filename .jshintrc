@@ -12,7 +12,7 @@
     "plusplus"      : true,
     "regexp"        : true,
     "undef"         : false,
-    "strict"        : true,
+    "strict"        : false,
     "trailing"      : true,
 
     "asi"           : false,
@@ -63,7 +63,7 @@
     "indent"        : 4,
 
     "maxparams"     : 4,
-    "maxlen"        : 80,
+    "maxlen"        : 100,
     "maxdepth"      : 2,
     "maxstatements" : 20,
     "maxcomplexity" : 4,
