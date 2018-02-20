@@ -1,1 +1,1 @@
-@call node node_modules\jslint\bin\jslint.js src\**\*.js test\*.js --edition=es6
+@call node node_modules\jslint\bin\jslint.js src\**\*.js test\*.js --edition=latest
