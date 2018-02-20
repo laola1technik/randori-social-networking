@@ -166,7 +166,7 @@ describe('Social Networking', function () {
             }, 10);
         });
 
-        it('should display message of all followed users in right order', function (done) {
+        it('should display message of all followed users interleaved', function (done) {
             const socialNetworking = new SocialNetworking();
             socialNetworking.submit('Jim follows Bob');
             socialNetworking.submit('Jim follows Daniel');
