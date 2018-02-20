@@ -10,6 +10,7 @@
   "scripts": {
     "start": "webpack --config webpack.config.js",
     "test": "cross-env NODE_PATH=./src/js/ ./node_modules/mocha/bin/mocha",
+    "nyan": "cross-env NODE_PATH=./src/js/ ./node_modules/mocha/bin/mocha --reporter nyan",
     "test-nyc": "cross-env NODE_PATH=./src/js/ nyc ./node_modules/mocha/bin/mocha",
     "test-nyc-html": "cross-env NODE_PATH=./src/js/ nyc --reporter=html ./node_modules/mocha/bin/mocha"
   },
