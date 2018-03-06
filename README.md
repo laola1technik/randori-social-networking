@@ -5,6 +5,9 @@ The language is JavaScript with [Mocha](https://mochajs.org/) and [Chai](http://
 * This package requires [Node Package Manager](https://www.npmjs.com/)
     * Have node installed, verify using ```node -v```
     * Have npm installed, verify using ```npm -v```
+* Install global packages
+    * nyc (for coverage) ```npm i -g nyc```
+    * cross-env (for windows support) ```npm i -g cross-env```
 * Download all required Composer dependencies of this package
     * ```npm install``` (in the root directory of this project)
     * verify using ```./mocha.sh``` (running tests)

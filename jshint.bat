@@ -1,1 +1,1 @@
-@call node_modules\.bin\jshint -c .jshintrc src test
+@call node node_modules\jshint\bin\jshint -c .jshintrc src test

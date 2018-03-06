@@ -4,6 +4,10 @@ logs
 npm-debug.log*
 node_modules
 
+# Coverage
+coverage
+.nyc_output
+
 # Optional npm cache directory
 .npm
 # Optional REPL history

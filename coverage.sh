@@ -1,2 +1,2 @@
 #!/bin/sh
-npm run test-nyc
+NODE_PATH=./src/js/ nyc ./node_modules/mocha/bin/mocha
