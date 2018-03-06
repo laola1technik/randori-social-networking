@@ -1,4 +1,5 @@
 /* global describe, it */
+/*jshint esversion: 6 */
 const should = require('chai').should();
 const SocialNetworking = require('socialNetworking.js');
 

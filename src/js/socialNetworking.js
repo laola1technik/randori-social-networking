@@ -1,3 +1,4 @@
+/*jshint esversion: 6 */
 const InvalidCommand = require('command/invalid.js');
 const PostCommand = require('command/post.js');
 const ReadCommand = require('command/read.js');

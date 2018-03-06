@@ -1,3 +1,4 @@
+/*jshint esversion: 6 */
 const TimeLine = require('timeLine.js');
 
 class Wall {

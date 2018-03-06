@@ -1,3 +1,4 @@
+/*jshint esversion: 6 */
 const User = require('user.js');
 
 class UserRepository { // TODO: rename to Users

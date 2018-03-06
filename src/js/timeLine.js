@@ -1,3 +1,4 @@
+/*jshint esversion: 6 */
 class TimeLine { // TODO: rename to Messages
 
     constructor(messages) {
